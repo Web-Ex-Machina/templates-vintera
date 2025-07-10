@@ -1,0 +1,19 @@
+<div class="list <?php echo $this->class ?>">
+  <div class="list__title"><i class="fa fa-map"></i>Travel Music</div>
+  <div class="list__wrapper">
+    <?php if($this->error): ?>
+      <div class="error">
+        <?= $this->msg ?>
+      </div>
+    <?php else: ?>
+      <?php foreach($this->locations as $location): ?>
+        <?php $this->insert($this->customTplForGeodataItems,['location'=>$location]); ?>
+      <?php endforeach; ?>
+    <?php endif; ?>
+  </div>
+  <div class="list__actions">
+    <a href="{{link_url::travel-music}}" class="btn-bg-primary icon-last list__action">
+      <i class="fa fa-arrow-circle-right"></i>&nbsp;<?php echo $this->trans('MSC.more',[],'contao_default'); ?>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<?php
+
+  // Prepare the main block classes
+  $arrClasses = [];
+  if ($this->nav_display) {
+      $arrClasses[] = $this->nav_display;
+  }
+  if ($this->nav_position_horizontal) {
+      $arrClasses[] = $this->nav_position_horizontal;
+  }
+  if ($this->nav_position_vertical) {
+      $arrClasses[] = $this->nav_position_vertical;
+  }
+  if ($this->fullwidth) {
+      $arrClasses[] = 'w-full';
+  }
+
+  // height calculation
+  $sliderHeight = '400px';
+  if ($this->height['value']) {
+      $sliderHeight = $this->height['value'].$this->height['unit'];
+  }
+  if ($this->fullheight) {
+      $sliderHeight = 'viewport';
+  }
+
+  // Prepare the slides
+  if ($this->items) {
+      $arrSlides = [];
+      foreach ($this->items as $slide) {
+          $arrCrop = deserialize($slide->img_size);
+          $objFile = FilesModel::findByUuid($slide->img_src);
+          $strFile = \Image::get($objFile->path, $arrCrop[0] ?: 1920, $arrCrop[1] ?: '', $arrCrop[2] ?: "proportional");
+          $arrSlide = [
+        "src"=>$strFile
+        ,"alt"=>$slide->img_alt
+      ];
+          $arrSlide['arrClasses'] = [];
+          if ($slide->image_align_horizontal) {
+              $arrSlide['arrClasses'][] = $slide->image_align_horizontal;
+          }
+          if ($slide->image_align_vertical) {
+              $arrSlide['arrClasses'][] = $slide->image_align_vertical;
+          }
+          if ($slide->image_opacity) {
+              $arrSlide['arrClasses'][] = 'img__opacity--'.$slide->image_opacity;
+          }
+
+          if ($slide->overlay_background) {
+              $arrSlide['arrClasses'][] = 'content__bg--'.$slide->overlay_background;
+          }
+          if ($slide->overlay_opacity) {
+              $arrSlide['arrClasses'][] = 'content__bg__opacity--'.$slide->overlay_opacity;
+          }
+
+          if ($slide->content_align_horizontal) {
+              $arrSlide['arrClasses'][] = $slide->content_align_horizontal;
+          }
+          if ($slide->content_align_vertical) {
+              $arrSlide['arrClasses'][] = $slide->content_align_vertical;
+          }
+
+          if ($slide->content_fontcolor) {
+              $arrSlide['arrClasses'][] = 'ft-'.$slide->content_fontcolor;
+          }
+          if ($slide->title_modifier) {
+              $arrSlide['arrClasses'][] = $slide->title_modifier;
+          }
+
+
+          $arrSlide["content"] = '';
+          if ($slide->headline['value']) {
+              $arrSlide["content"] .= '<'.($slide->headline['unit'] ?: 'div').' class="sliderFW__item__title">'.$slide->headline['value'].'</'.($slide->headline['unit'] ?: 'div').'>';
+          }
+          if ($slide->content) {
+              $arrSlide["content"] .= $slide->content;
+          }
+
+          if ($slide->link_href) {
+              $arrSlide["content"] .= sprintf(
+                  '<a href="%s" title="%s" class="%s"%s>%s</a>',
+                  $slide->link_href,
+                  $slide->link_title,
+                  $slide->link_classes,
+                  ($slide->link_target ? ' target="_blank"' : ''),
+                  $slide->link_text
+              );
+          }
+
+          $arrSlides[] = $arrSlide;
+      }
+  }
+?>
+
+<div class="sliderFW <?= implode(' ', $arrClasses) ?> <?= $this->class ?>"<?= $this->cssID ?> data-height="<?= $sliderHeight ?>" data-loop="<?= $this->loop ? "true" : "false" ?>" data-auto="<?= $this->autoplay ? "true" : "false" ?>" data-swipe="<?= $this->swipe ? "true" : "false" ?>" data-arrows="<?= $this->nav_arrows ? "true" : "false" ?>" data-transition="<?= $this->transition ?>" data-keypress="<?= $this->keypress ? "true" : "false" ?>" data-duration="<?= $this->transition_duration ?>" data-delay="<?= $this->transition_delay ?>" data-nbitems="<?= $this->itemsPerRow ?: 1 ?>">
+  <div class="sliderFW__container" style="height: <?= $sliderHeight!='viewport' ? $sliderHeight : "" ?>;">
+    <div class="sliderFW__rail">
+    <?php if (!empty($arrSlides)): ?>
+      <?php foreach ($arrSlides as $slide): ?>
+      <div class="sliderFW__item  <?= implode(' ', $slide['arrClasses']) ?>">
+        <div class="sliderFW__item__bg">
+          <img src="<?= $slide['src'] ?>" alt="<?= $slide['alt'] ?>">
+        </div>
+        <?php if ($slide['content']): ?>
+        <div class="sliderFW__item__content">
+          <div class="sliderFW__item__content__wrapper">
+          <?= $slide['content'] ?>
+          </div>
+        </div>
+        <?php endif; ?>
+      </div>
+      <?php endforeach; ?>
+    <?php endif; ?>
+    </div>
+  </div>
+</div>

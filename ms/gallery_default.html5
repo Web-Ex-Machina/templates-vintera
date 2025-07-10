@@ -1,0 +1,13 @@
+<?php foreach ($this->body as $class => $row): ?>
+<?php foreach ($row as $col): ?>
+
+<?php if ($col->addImage): ?>
+<div class="gallery-grid <?= $col->class ?>" >
+	<div class="gallery-grid">
+		<?php $this->insert('image', (array) $col); ?>
+	</div>
+</div>
+<?php endif; ?>
+<?php endforeach; ?>
+<?php endforeach; ?>
+

@@ -1,0 +1,99 @@
+<?php
+  $nbPublishedArtists = MetalStoreBundle\Model\Artists\Artist::countItems(['isPublished' => '1']);
+  $nbTotalArtists = MetalStoreBundle\Model\Artists\Artist::countItems();
+
+  $nbPublishedMapItems = WEM\GeoDataBundle\Model\MapItem::countItems(['published' => true]);
+  $nbTotalMapItems = WEM\GeoDataBundle\Model\MapItem::countItems();
+
+  $nbPublishedNews = Contao\NewsModel::countByPublished('1');
+  $nbTotalNews = Contao\NewsModel::countAll();
+?>
+
+<div id="tl_soverview">
+  <div id="tl_messages">
+    <h2>Statistiques Vintera</h2>
+
+    <p><ul>
+      <li>Nombre de visites depuis la création du site : <a href="https://analytics.webexmachina.fr/index.php?module=CoreHome&action=index&idSite=7&period=week&date=today#?period=range&date=2023-06-01,<?= date('Y-m-d') ?>&category=Dashboard_Dashboard&subcategory=1&idSite=7" title="Aller sur Matomo" target="_blank">Matomo</a></li>
+      <li>Nombre de visiteurs uniques sur les 30 derniers jours : <a href="https://analytics.webexmachina.fr/index.php?module=CoreHome&action=index&idSite=7&period=week&date=today#?period=day&date=<?= date('Y-m-d') ?>&idSite=7&category=General_Visitors&subcategory=General_Overview" title="Aller sur Matomo" target="_blank">Matomo</a></li>
+      <li>Recherche (organique / directe / réseaux sociaux) : <a href="https://analytics.webexmachina.fr/index.php?module=CoreHome&action=index&idSite=7&period=week&date=today#?period=range&date=2023-06-01,<?= date('Y-m-d') ?>&idSite=7&category=Referrers_Referrers&subcategory=Referrers_WidgetGetAll" title="Aller sur Matomo" target="_blank">Matomo</a></li>
+      <li>Pays des visiteurs : <a href="https://analytics.webexmachina.fr/index.php?module=CoreHome&action=index&idSite=7&period=week&date=today#?idSite=7&period=range&date=2023-06-01,<?= date('Y-m-d') ?>&category=General_Visitors&subcategory=UserCountry_SubmenuLocations" title="Aller sur Matomo" target="_blank">Matomo</a></li>
+      <li>Pages les plus vues  : <a href="https://analytics.webexmachina.fr/index.php?module=CoreHome&action=index&idSite=7&period=week&date=today#?idSite=7&period=range&date=2023-06-01,<?= date('Y-m-d') ?>&category=General_Actions&subcategory=General_Pages" title="Aller sur Matomo" target="_blank">Matomo</a></li>
+      <li>Top contenu des 30 derniers jours : <a href="https://analytics.webexmachina.fr/index.php?module=CoreHome&action=index&idSite=7&period=week&date=today#?period=range&date=<?= date('Y-m-d', strtotime("-1 month")) ?>,<?= date('Y-m-d') ?>&idSite=7&category=General_Actions&subcategory=General_Pages&comparePeriods[]=range&comparePeriodType=previousPeriod&compareDates[]=<?= date('Y-m-d', strtotime("-2 months")) ?>,<?= date('Y-m-d', strtotime("-1 month -1 day")) ?>" title="Aller sur Matomo" target="_blank">Matomo</a></li>
+      <li>Temps moyen sur les pages : Voir lien ci-dessus</li>
+      <li>Nombre d'artistes / groupes (publiés / total) : <?= $nbPublishedArtists ?> / <?= $nbTotalArtists ?></li>
+      <li>Nombre de lieux (publiés / total) : <?= $nbPublishedMapItems ?> / <?= $nbTotalMapItems ?></li>
+      <li>Nombre d'articles dans le magazine (publiés / total) : <?= $nbPublishedNews ?> / <?= $nbTotalNews ?></li>
+    </ul></p>
+  </div>
+
+  <div id="tl_messages">
+    <h2><?= $this->systemMessages ?></h2>
+    <?= $this->messages ?>
+    <p><?= $this->loginMsg ?></p>
+  </div>
+
+  <div id="tl_shortcuts">
+    <h2><?= $this->shortcuts ?></h2>
+    <p><?= $this->shortcutsLink ?></p>
+  </div>
+
+  <div id="tl_versions">
+    <h2><?= $GLOBALS['TL_LANG']['MSC']['latestChanges'] ?></h2>
+    <?php if (!empty($this->versions)): ?>
+      <table class="tl_listing">
+      <thead>
+        <tr>
+          <th><?= $GLOBALS['TL_LANG']['MSC']['date'] ?></th>
+          <th><?= $GLOBALS['TL_LANG']['MSC']['user'] ?></th>
+          <th><?= $GLOBALS['TL_LANG']['MSC']['table'] ?></th>
+          <th>ID</th>
+          <th><?= $GLOBALS['TL_LANG']['MSC']['description'] ?></th>
+          <th><?= $GLOBALS['TL_LANG']['MSC']['version'] ?></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($this->versions as $version): ?>
+          <?php 
+        	$objU = UserModel::findOneByUsername($version['username']); 
+        	if ($objU) {
+        		$strName = $objU->name;	
+        	} else {
+        		$strName = $version['username'] ?: '-';
+        	}
+          ?>
+          <tr class="<?= $version['class'] ?> click2edit hover-row">
+            <td><?= $version['date'] ?></td>
+            <td><?= $strName ?></td>
+            <td><?= $version['shortTable'] ?></td>
+            <td><?= $version['pid'] ?></td>
+            <td><?= $version['description'] ?: '-' ?></td>
+            <td><?= $version['active'] ? '<strong>'.$version['version'].'</strong>' : $version['version'] ?></td>
+            <td>
+              <?php if ($version['deleted']): ?>
+                <a href="<?= $this->route('contao_backend', ['do' => 'undo']) ?>" title="<?= Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['restore']) ?>"><?= Contao\Image::getHtml('undo.svg', '', 'class="undo"') ?></a>
+              <?php else: ?>
+                <?php if ($version['editUrl']): ?>
+                  <a href="<?= $version['editUrl'] ?>" title="<?= $this->editElement ?>" class="edit"><?= Contao\Image::getHtml('edit.svg', '', 'style="padding:0 2px"') ?></a>
+                <?php else: ?>
+                  <?= Contao\Image::getHtml('edit_.svg', '', 'style="padding:0 2px"') ?>
+                <?php endif; ?>
+                <?php if ($version['to'] > 1): ?>
+                  <a href="<?= $version['editUrl'] ?>&amp;from=<?= $version['from'] ?>&amp;to=<?= $version['to'] ?>&amp;versions=1&amp;popup=1" title="<?= $this->showDifferences ?>" onclick="Backend.openModalIframe({'title':'<?= sprintf($this->recordOfTable, $version['pid'], $version['fromTable']) ?>','url':this.href});return false"><?= Contao\Image::getHtml('diff.svg') ?></a>
+                <?php else: ?>
+                  <?= Contao\Image::getHtml('diff_.svg') ?>
+                <?php endif; ?>
+              <?php endif; ?>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+      </table>
+      <?= $this->pagination ?>
+    <?php else: ?>
+      <p><?= $GLOBALS['TL_LANG']['MSC']['noVersions'] ?></p>
+    <?php endif; ?>
+  </div>
+
+</div>

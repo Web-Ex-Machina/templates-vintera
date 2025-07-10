@@ -1,0 +1,11 @@
+<?php $this->extend($this->isRandomOrder ? 'block_unsearchable' : 'block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+<div class="gdlr-shortcode-wrapper" itemscope itemtype="http://schema.org/ImageGallery">
+	<div class="gdlr-gallery-grid gdlr-item "><div class="gdlr-gallery-grid-container">
+		<?= $this->images ?>
+	</div>
+</div>
+<?= $this->pagination ?>
+
+<?php $this->endblock(); ?>

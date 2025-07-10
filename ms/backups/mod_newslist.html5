@@ -1,0 +1,22 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <div class="ms__artist__news__title w-100">
+    <i class="fa fa-newspaper fa-2x"></i>
+    <h1 class="m-bottom-0">Latest news</h1>
+  </div>
+
+  <?php if (empty($this->articles)): ?>
+    <p class="empty"><?= $this->empty ?></p>
+  <?php else: ?>
+    <div class="ms__artist__news__wrapper d-grid">
+    <?= implode('', $this->articles) ?>
+    </div>
+
+    <div class="w-100">
+      <?= $this->pagination ?>
+    </div>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

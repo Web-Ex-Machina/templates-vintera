@@ -1,0 +1,106 @@
+
+<div class="layout_full bg-blacklighter block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article">
+
+  <h1 itemprop="name"><?= $this->newsHeadline ?></h1>
+
+  <?php if ($this->hasMetaFields): ?>
+    <div class="ms__artist__news__data">
+    <p class="info">
+      <span class="tag date revert"><time datetime="<?= $this->datetime ?>" itemprop="datePublished"><?= $this->date ?></time></span>
+      <span class="tag category revert"><?= $this->author ?></span>
+      <?= $this->commentCount ?></p>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($this->hasSubHeadline): ?>
+    <h2 itemprop="headline"><?= $this->subHeadline ?></h2>
+  <?php endif; ?>
+
+  <?php if ($this->hasText): ?>
+    <?= $this->text ?>
+  <?php else: ?>
+    <div class="ce_text block">
+      <?php if (!$this->addBefore): ?>
+        <?= $this->teaser ?>
+      <?php endif; ?>
+
+      <?php if ($this->addImage): ?>
+      <div class="text-center">
+        <?php $this->insert('image', $this->arrData); ?>
+      </div>
+      <?php endif; ?>
+      <?php if ($this->addBefore): ?>
+        <?= $this->teaser ?>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($this->enclosure): ?>
+    <ul class="enclosure">
+      <?php foreach ($this->enclosure as $enclosure): ?>
+        <li class="download-element ext-<?= $enclosure['extension'] ?>">
+          <a href="<?= $enclosure['href'] ?>" title="<?= $enclosure['title'] ?>"><?= $enclosure['link'] ?> <span class="size">(<?= $enclosure['filesize'] ?>)</span></a>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  <?php endif; ?>
+
+  <!-- Artists -->
+  <?php if ($this->relatedArtists): ?>
+  <div class="map__item__artists">
+    <div class="map__item__artists__title">
+      <h3 class="ft-upper">Artists</h3>
+    </div>
+    <div class="map__item__artists__wrapper ms__artist__relatedartists__wrapper .block-card__figure, .ms__artist__relatedartists__wrapper flex-wrap addFillers">
+    <?php if (is_array($this->relatedArtists) && !empty($this->relatedArtists)): ?>
+      <?php foreach ($this->relatedArtists as $key => $item): ?>
+        <div class="block-card" data-preset="minimalist">
+          <<?= $item['href'] ? 'a href="'.$item['href'].'" title="Accéder à la page de '.$item['title'].'"' : 'div' ?> class="block-card__wrapper">
+            <div class="block-card__figure r_1-1">
+              <?php if ($item['picture']): ?>
+                <img src="<?= $item['picture'][0]['file']->path ?>" alt="<?= $item['picture'][0]['file']->meta ?: $item['picture'][0]['file']->name ?>">
+              <?php else: ?>
+                <img src="bundles/metalstore/frontend/media/placeholders/album_cover_ms.jpg" alt="sample image">
+              <?php endif ?>
+            </div>
+            <div class="block-card__content">
+              <div class="block-card__title"><?= $item['title'] ?><?php if ($item['deathDate']): ?>&nbsp;<i class="fa fa-cross"></i><?php endif; ?></div>
+            </div>
+          </<?= $item['href'] ? 'a' : 'div' ?> >
+        </div>
+      <?php endforeach ?>
+    <?php endif ?>
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <!-- Map Items -->
+  <?php if ($this->relatedMapItems): ?>
+  <div class="map__item__artists">
+    <div class="map__item__artists__title">
+      <h3 class="ft-upper">Travel Music</h3>
+    </div>
+    <div class="map__item__artists__wrapper ms__artist__relatedartists__wrapper .block-card__figure, .ms__artist__relatedartists__wrapper flex-wrap addFillers">
+    <?php if (is_array($this->relatedMapItems) && !empty($this->relatedMapItems)): ?>
+      <?php foreach ($this->relatedMapItems as $key => $item): ?>
+        <div class="block-card" data-preset="minimalist">
+          <<?= $item['href'] ? 'a href="'.$item['href'].'" title="Accéder à la page de '.$item['title'].'"' : 'div' ?> class="block-card__wrapper">
+            <div class="block-card__figure r_1-1">
+              <?php if ($item['picture']): ?>
+                <img src="<?= $item['picture']->path ?>" alt="<?= $item['picture']->meta ?: $item['picture']->name ?>">
+              <?php else: ?>
+                <img src="bundles/metalstore/frontend/media/placeholders/album_cover_ms.jpg" alt="sample image">
+              <?php endif ?>
+            </div>
+            <div class="block-card__content">
+              <div class="block-card__title"><?= $item['title'] ?><?php if ($item['deathDate']): ?>&nbsp;<i class="fa fa-cross"></i><?php endif; ?></div>
+            </div>
+          </<?= $item['href'] ? 'a' : 'div' ?> >
+        </div>
+      <?php endforeach ?>
+    <?php endif ?>
+    </div>
+  </div>
+  <?php endif; ?>
+
+</div>

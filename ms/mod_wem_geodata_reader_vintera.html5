@@ -1,0 +1,272 @@
+<?php if ($this->map['doNotAddItemsToContaoSearch']): ?>
+<!-- indexer::stop -->
+<?php endif; ?>
+<div class="<?= $this->class ?> container block">
+	<?php if ($this->error): ?>
+	<div class="error">
+		<?= $this->msg ?>
+	</div>
+	<?php else: ?>
+		<div class="location layout_full block <?= $this->class ?>"  itemprop="location" itemscope itemtype="http://schema.org/Place">
+			<?php if ($this->item['picture']['path']): ?>
+				<div class="reader__picture img-container r_16-9 w-100">
+					<?php $this->insert('image', [
+                        'picture'=>[
+                            'img'=>[
+                                'src' => $this->item['picture']['path']
+                            ]
+                        ],
+                        'caption' => 'Copyright belongs to the creator'
+                    ]); ?>
+				</div>
+			<?php endif; ?>
+
+			<div class="d-grid cols-3 cols-sm-1 m-top m-bottom">
+				<div class="cols-span-2">
+			
+					<div class="reader__headline">
+						<h1 class="m-right m-bottom-0 ft-notrs" itemprop="name"><?= $this->item['title'] ?></h1>
+					</div>
+					<?php if ($this->item['categories'] || $this->item['stylesForDisplay'] || $this->item['capacity']): ?>
+					<div class="reader__categories">
+						<?php
+		                    $arrVinteraAttributes = [];
+		                    $arrCategories = [];
+		                    $arrStyles = [];
+		                    if ($this->item['categories']) {
+		                        foreach ($this->item['categories'] as $c) {
+		                            $arrCategories[] = $c['title'];
+		                        }
+		                        $arrVinteraAttributes[] = implode(', ', $arrCategories);
+		                    }
+		                    if ($this->item['stylesForDisplay']) {
+		                        foreach ($this->item['stylesForDisplay'] as $s) {
+		                            $arrStyles[] = $s['title'];
+		                        }
+		                        $arrVinteraAttributes[] = implode(', ', $arrStyles);
+		                    }
+		                    if ($this->item['capacity']) {
+		                        $arrVinteraAttributes[] = ' Cap. '.$this->item['capacity'] .'p';
+		                    }
+		                ?>
+						<p class="ft-1-2-em"><?= implode(' | ', $arrVinteraAttributes) ?></p>
+					</div>
+					<?php endif; ?>
+
+					<div class="reader__text ce_text block" itemprop="description">
+						<?php if ($this->item['content']): ?>
+							<?php echo $this->item['content']; ?>
+						<?php else: ?>
+							<?= $this->item['teaser'] ?>
+						<?php endif; ?>
+					</div>
+
+			
+					<?php if (!empty($this->item['attributes'])): ?>
+					<div class="reader__attributes block m-bottom">
+						<ul>
+							<?php foreach ($this->item['attributes'] as $attribute): ?>
+							<li>
+								<span class="ft-bold"><?php echo $attribute['attribute']; ?>:</span>&nbsp;<?php echo $attribute['value']; ?>
+							</li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+					<?php endif; ?>
+
+					<!-- contacts -->
+					<div class="reader__contact block m-bottom">
+						<?php if ($this->item['phone']): ?>
+							<div class="map__list__item__line">
+								<a href="tel:<?= $this->item['phone']; ?>" rel="nofollow">
+									<i class="fas fa-phone fa-lg"></i>&nbsp;<span itemprop="telephone"><?= $this->item['phone']; ?></span>
+								</a>
+							</div>
+						<?php endif; ?>
+						<?php if ($this->item['fax']): ?>
+							<div class="map__list__item__line">
+							<a href="fax:<?= $this->item['fax']; ?>" rel="nofollow">
+								<i class="fas fa-fax fa-lg"></i>&nbsp;<span itemprop="faxNumber"><?= $this->item['fax']; ?></span>
+							</a>
+							</div>
+						<?php endif; ?>
+						<?php if ($this->item['email']): ?>
+							<div class="map__list__item__line">
+							<a href="mailto:<?= $this->item['email']; ?>" rel="nofollow">
+								<i class="fa-solid fa-envelope fa-lg"></i>&nbsp;<span itemprop="faxNumber"><?= $this->item['email']; ?></span>
+							</a>
+							</div>
+						<?php endif; ?>
+					</div>
+
+					<!-- social networks -->
+					<div class="share-buttons__container  m-bottom-x2 flex gap-1-em">
+						<?php if ($this->item['website']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['website']; ?>" rel="nofollow" target="_blank" itemprop="sameAs"><i class="fal fa-globe fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['facebook']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['facebook']; ?>" rel="nofollow" target="_blank"><i class="fab fa-facebook fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['twitter']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['twitter']; ?>" rel="nofollow" target="_blank"><i class="fab fa-twitter fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['instagram']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['instagram']; ?>" rel="nofollow" target="_blank"><i class="fab fa-instagram fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['google']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['google']; ?>" rel="nofollow" target="_blank"><i class="fab fa-google fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['imdb']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['imdb']; ?>" rel="nofollow" target="_blank"><i class="fab fa-imdb fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['myspace']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['myspace']; ?>" rel="nofollow" target="_blank"><span style="font-size: 0.65em; display: flex; margin-right: 0.85em;" class="fa-stack">    <i class="fa fa-user fa-stack-2x"       style="font-size: 0.5em; margin-left: -0.67em; margin-top: 0.46em;">    </i>    <i class="fa fa-user fa-stack-2x fa-user"       style="font-size: 1em;">    </i>    <i class="fa fa-user fa-stack-2x fa-user"       style="font-size: 1.5em; margin-left: 0.37em; margin-top: -0.16em;">    </i></span></a>
+						<?php endif; ?>
+						<?php if ($this->item['tumblr']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['tumblr']; ?>" rel="nofollow" target="_blank"><i class="fab fa-tumblr fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['wikipedia']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['wikipedia']; ?>" rel="nofollow" target="_blank"><i class="fab fa-wikipedia-w fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['youtube']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['youtube']; ?>" rel="nofollow" target="_blank"><i class="fab fa-youtube fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['deezer']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['deezer']; ?>" rel="nofollow" target="_blank"><i class="fab fa-deezer fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['spotify']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['spotify']; ?>" rel="nofollow" target="_blank"><i class="fab fa-spotify fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['soundcloud']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['soundcloud']; ?>" rel="nofollow" target="_blank"><i class="fab fa-soundcloud fa-2xl"></i></a>
+						<?php endif; ?>
+						<?php if ($this->item['linkedin']): ?>
+							<a class="s_hare-buttons__btn" href="<?= $this->item['linkedin']; ?>" rel="nofollow" target="_blank"><i class="fab fa-linkedin fa-2xl"></i></a>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<div class="cols-span-1">
+					{{insert_content::2297}}
+
+					<?php if ($this->item['artists']): ?>
+					<div class="map__item__artists">
+						<div class="map__item__artists__title">
+							<h3 class="ft-upper">Artists</h3>
+						</div>
+
+						<!-- Add related artists -->
+						<div class="map__item__artists__wrapper ms__artist__relatedartists__wrapper .block-card__figure, .ms__artist__relatedartists__wrapper flex-wrap addFillers">
+						<?php if (is_array($this->item['artists']) && !empty($this->item['artists'])): ?>
+						  <?php foreach ($this->item['artists'] as $key => $item): ?>
+						    <div class="block-card" data-preset="minimalist">
+						      <<?= $item['href'] ? 'a href="'.$item['href'].'" title="Accéder à la page de '.$item['title'].'"' : 'div' ?> class="block-card__wrapper">
+						        <div class="block-card__figure r_1-1">
+						          <?php if ($item['picture']): ?>
+						            <img src="<?= $item['picture'][0]['file']->path ?>" alt="<?= $item['picture'][0]['file']->meta ?: $item['picture'][0]['file']->name ?>">
+						          <?php else: ?>
+						            <img src="bundles/metalstore/frontend/media/placeholders/album_cover_ms.jpg" alt="sample image">
+						          <?php endif ?>
+						        </div>
+						        <div class="block-card__content">
+						          <div class="block-card__title"><?= $item['title'] ?><?php if ($item['deathDate']): ?>&nbsp;<i class="fa fa-cross"></i><?php endif; ?></div>
+						        </div>
+						      </<?= $item['href'] ? 'a' : 'div' ?> >
+						    </div>
+						  <?php endforeach ?>
+						<?php endif ?>
+						</div>
+					</div>
+					<?php endif; ?>
+
+					<?php if ($this->item['news']): ?>
+					<div class="map__item__news">
+						<div class="map__item__news__title">
+							<h3 class="ft-upper">News</h3>
+						</div>
+
+						<!-- Add related news -->
+						<div class="ms__artist__news__wrapper d-grid block-card__container isGrid">
+						<?php if (is_array($this->item['news']) && !empty($this->item['news'])): ?>
+						  <?php foreach ($this->item['news'] as $key => $item): ?>
+						    <div class="layout_latest block-card arc_1 block featured first even" itemscope="" itemtype="http://schema.org/Article" data-preset="inline">
+						      <<?= $item['href'] ? 'a href="'.$item['href'].'" title="Accéder à la page de '.$item['headline'].'"' : 'div' ?> class="block-card__wrapper">
+						        <div class="block-card__figure aspect_2-1">
+						          <?php if ($item['picture']): ?>
+						          	<figure class="image_container float_above">
+						            	<img src="<?= $item['picture']->path ?>" alt="<?= $item['picture']->meta ?: $item['picture']->name ?>">
+						            </figure>
+						          <?php endif ?>
+						        </div>
+						        <div class="block-card__content">
+						          <div class="block-card__title h3" itemprop="name">
+						          	<h3><span itemprop="headline"><?= $item['headline'] ?></span></h3>
+						          </div>
+						          <div class="ms__artist__news__data">
+							        <span class="tag date revert"><time datetime="<?= $item['datetime'] ?>" itemprop="datePublished"><?= $item['date'] ?></time></span>
+							        <span class="tag category revert"><?= $item['author'] ?></span>
+							      </div>
+							      <div class="block-card__text">
+							        <?= $item['teaser'] ?>
+							      </div>
+							      <?php if ($item['hasText'] || $item['hasTeaser']): ?>
+							      <div class="block-card__actions">
+							        <a href="<?= $item['href'] ?>" class="btn icon-last">READ <i class="fa fa-arrow-right"></i></a>
+							      </div>
+							      <?php endif; ?>
+						        </div>
+						      </<?= $item['href'] ? 'a' : 'div' ?> >
+						    </div>
+						  <?php endforeach ?>
+						<?php endif ?>
+						</div>
+					</div>
+					<?php endif; ?>
+
+				</div>
+			</div>
+
+
+		    <div class="reader__location">
+				<?php if ($this->item['address']): ?>
+					<i class="fal fa-map-marker-alt"></i>&nbsp;
+					<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+						<?= $this->item['address'] ?>
+					</span>
+				<?php endif; ?>
+<!-- 				<br />
+				<?= $this->item['admin_lvl_1'] ?>
+				<?php if ($this->item['admin_lvl_2']): ?>
+					- <?= $this->item['admin_lvl_2'] ?>
+				<?php endif; ?>
+				<?php if ($this->item['admin_lvl_3']): ?>
+					- <?= $this->item['admin_lvl_3'] ?>
+				<?php endif; ?> -->
+		    </div>
+
+		    <?php if (!empty($this->item['lat']) && !empty($this->item['lng'])): ?>
+			    <div itemprop="geo" itemscope itemtype="https://schema.org/GeoCoordinates">
+			    	<meta itemprop="latitude" content="<?= $this->item['lat']; ?>" />
+			    	<meta itemprop="longitude" content="<?= $this->item['lng']; ?>" />
+			    </div>
+				<div id="map-<?= $this->id ?>" class="reader__map" style="height:512px;" data-lat="<?= $this->item['lat']; ?>" data-lon="<?= $this->item['lng']; ?>"></div>
+				<script type="text/javascript">
+				  var mapContainer = document.querySelector('#map-<?= $this->id ?>');
+				  var map = L.map('map-<?= $this->id ?>',{
+				    gestureHandling: true,
+				  }).setView([mapContainer.getAttribute('data-lat'),mapContainer.getAttribute('data-lon')], 16);
+				  var OpenStreetMap_Layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				    maxZoom: 18,
+				    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				  })
+				  .addTo(map);
+				  var marker = L.marker([mapContainer.getAttribute('data-lat'),mapContainer.getAttribute('data-lon')]).addTo(map);
+				</script>
+		    <?php endif; ?>
+		</div>
+	<?php endif; ?>
+</div>
+
+<?php if ($this->map['doNotAddItemsToContaoSearch']): ?>
+<!-- indexer::continue -->
+<?php endif; ?>

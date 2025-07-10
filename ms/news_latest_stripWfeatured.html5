@@ -1,0 +1,50 @@
+<?php if (str_contains($this->class,'first')): ?>
+  <div class="layout_latest_magazine block-card arc_<?= $this->archive->id ?> block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article" data-preset="thumbnail" data-maxlines="3">
+    <div class="block-card__wrapper" title="<?= $this->headline ?>">
+      <div class="block-card__figure r_2-1">
+      <?php if ($this->addImage): ?>
+          <?php $this->insert('image', $this->arrData); ?>
+      <?php endif; ?>
+      </div>
+      <div class="block-card__headline">
+        <span class="tag date revert"><time datetime="<?= $this->datetime ?>" itemprop="datePublished"><?= $this->date ?></time></span>
+          <div>
+            <?php if ($this->author): ?>
+              <span class="tag revert"><?php echo $this->author ?></span>
+            <?php endif ?>
+            <!-- <?php foreach ($this->categories as $key => $category): ?>
+              <span class="tag revert"><?php echo $category['title'] ?></span>
+            <?php endforeach ?>    -->     
+          </div>
+      </div>
+      <div class="block-card__content">
+        <div class="block-card__title h3" itemprop="name"><?= $this->linkHeadline ?></div>
+      </div>
+    </div>
+  </div>
+<?php else: ?>
+  <div class="layout_latest_strip block-card arc_<?= $this->archive->id ?> block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article" data-preset="inline" data-maxlines="2">
+    <div class="block-card__wrapper" title="<?= $this->headline ?>">
+      <?php if ($this->addImage): ?>
+        <div class="block-card__figure">
+          <?php $this->insert('image', $this->arrData); ?>
+        </div>
+      <?php endif; ?>
+
+      <div class="block-card__content ft-0-8-em">
+        <div class="block-card__title" itemprop="name"><?= $this->linkHeadline ?></div>
+        <div class="ms__artist__news__data">
+          <span class="tag date revert"><time datetime="<?= $this->datetime ?>" itemprop="datePublished"><?= $this->date ?></time></span>
+          <?php if ($this->author): ?>
+            <span class="tag revert"><?php echo $this->author ?></span>
+          <?php endif ?>
+          <!-- <?php if ($this->categories && !str_contains($this->class,'first')): ?>
+            <?php foreach ($this->categories as $key => $category): ?>
+              <span class="tag revert"><?php echo $category['title'] ?></span>
+            <?php endforeach ?>        
+          <?php endif ?> -->
+        </div>
+      </div>
+    </div>
+  </div>
+<?php endif ?>

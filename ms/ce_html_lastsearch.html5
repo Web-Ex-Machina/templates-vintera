@@ -1,0 +1,53 @@
+<h3 class="">Reprendre vos dernières recherches</h3>
+<div class="lastsearch__list d-grid">
+	<div class="block-card lastsearch__item" data-preset="lastsearch">
+		<div class="lastsearch__close"><i class="fa fa-times"></i></div>
+		<a href="#" class="block-card__wrapper">
+			<div class="block-card__content">
+				<div class="block-card__title ">CD Blackrain</div>
+				<div class="block-card__text">
+					<span class="lastsearch__criteria">
+						CD, Vinyle - état neuf - 100€ max
+					</span>
+					<span class="lastsearch__location">
+						<i class="fa fa-location-dot"></i>&nbsp; Autour de <span class="location__name">Lyon</span> - <span class="location__radius">10km</span>
+					</span>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="block-card lastsearch__item" data-preset="lastsearch">
+		<div class="lastsearch__close"><i class="fa fa-times"></i></div>
+		<a href="#" class="block-card__wrapper">
+			<div class="block-card__content">
+				<div class="block-card__title ">Platine</div>
+				<div class="block-card__text">
+					<span class="lastsearch__criteria">
+						Matériel, Hifi - état neuf - 150€ max
+					</span>
+					<span class="lastsearch__location">
+						<i class="fa fa-location-dot"></i>&nbsp; Autour de <span class="location__name">Lyon</span> - <span class="location__radius">10km</span>
+					</span>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="block-card lastsearch__item" data-preset="lastsearch">
+		<div class="lastsearch__close"><i class="fa fa-times"></i></div>
+		<a href="#" class="block-card__wrapper">
+			<div class="block-card__content">
+				<div class="block-card__title ">Guitare électrique</div>
+				<div class="block-card__text">
+					<span class="lastsearch__criteria">
+						Matériel, Instrument - état correcte - 70€ max
+					</span>
+					<span class="lastsearch__location">
+						<i class="fa fa-location-dot"></i>&nbsp; Autour de <span class="location__name">Lyon</span> - <span class="location__radius">10km</span>
+					</span>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>

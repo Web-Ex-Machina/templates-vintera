@@ -1,0 +1,36 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <?php if (empty($this->articles)): ?>
+    <p class="empty"><?= $this->empty ?></p>
+  <?php else: ?>
+    <div class="ms__artist__news__wrapper d-grid w-100 block-card__container isGrid">
+    <?= implode('', $this->articles) ?>
+    </div>
+    <?php if ($this->news_filterDefault): ?>
+      <?php 
+        switch (unserialize($this->news_filterDefault)[0]) {
+          case 1: $alias = 'festivals'; break;
+          case 3: $alias = 'concerts'; break;
+          case 4: $alias = 'interviews'; break;
+          case 5: 
+          case 6: $alias = 'reportages'; break;
+          case 9: $alias = 'chronique'; break;
+          case 7: $alias = 'news'; break;
+          case 18: $alias = 'podcast'; break;
+          default: break;
+        }
+      ?>
+      <div class="m-left-auto">
+        <a href="/magazine-articles/category/<?php echo $alias ?>.html" class="btn icon-last" title="More <?php echo $this->headline?strtolower($this->headline):'' ?>">More <?php echo $this->headline?strtolower($this->headline):'' ?> <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    <?php endif ?>
+    <?php if ($this->pagination): ?>
+      <div class="w-100">
+        <?= $this->pagination ?>
+      </div>
+    <?php endif ?>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

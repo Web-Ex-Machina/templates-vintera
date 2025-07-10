@@ -1,0 +1,21 @@
+
+<?php $this->block('content'); ?>
+
+  <?php if ($this->headline): ?>
+    <<?php echo $this->hl ?> class="h1"><?php echo $this->headline ?></<?php echo $this->hl ?>>
+  <?php endif ?>
+
+  <?php if (empty($this->articles)): ?>
+    <p class="empty"><?= $this->empty ?></p>
+  <?php else: ?>
+    <div class="ms__artist__news__wrapper d-grid">
+    <?= implode('', $this->articles) ?>
+    </div>
+    <?php if ($this->pagination): ?>
+      <div class="w-100">
+        <?= $this->pagination ?>
+      </div>
+    <?php endif ?>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

@@ -1,0 +1,122 @@
+<h2 class="h1">Marketplace</h2>
+<div class="marketplace__list d-grid cols-autofill" style="--griditem-minwidth:150px;">
+	<div class="block-card" data-preset="marketplace">
+		<div class="block-card__wrapper">
+			<div class="block-card__figure">
+				<img src="https://picsum.photos/400/400" alt="sample image">
+			</div>
+			<div class="block-card__content">
+				<div class="block-card__headline">
+					<div class="tag author">
+						<span class="thumbnail"><img src="https://picsum.photos/25/25" alt=""></span>
+						<span class="name">Jeff92</span>
+					</div>
+					<div class="tag likes">
+						<i class="fa fa-heart"></i>&nbsp;&nbsp;<span class="nb">60</span>
+					</div>
+				</div>
+				<div class="block-card__title">Vinyle de Michael Jackson</div>
+				<div class="block-card__text">
+					<span class="tag">Neuf</span>
+				</div>
+			</div>
+			<div class="block-card__footer">
+				<div class="price">160,00€</div>
+				<div class="actions">
+					<a href="#" class="action"><i class="fa fa-messages"></i></a>
+					<a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="block-card" data-preset="marketplace">
+		<div class="block-card__wrapper">
+			<div class="block-card__figure">
+				<img src="https://picsum.photos/400/401" alt="sample image">
+			</div>
+			<div class="block-card__content">
+				<div class="block-card__headline">
+					<div class="tag author">
+						<span class="thumbnail"><img src="https://picsum.photos/25/26" alt=""></span>
+						<span class="name">Jeff92</span>
+					</div>
+					<div class="tag likes">
+						<i class="fa fa-heart"></i>&nbsp;&nbsp;<span class="nb">60</span>
+					</div>
+				</div>
+				<div class="block-card__title">Vinyle de Michael Jackson</div>
+				<div class="block-card__text">
+					<span class="tag">Neuf</span>
+				</div>
+			</div>
+			<div class="block-card__footer">
+				<div class="price">160,00€</div>
+				<div class="actions">
+					<a href="#" class="action"><i class="fa fa-messages"></i></a>
+					<a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="block-card" data-preset="marketplace">
+		<div class="block-card__wrapper">
+			<div class="block-card__figure">
+				<img src="https://picsum.photos/400/402" alt="sample image">
+			</div>
+			<div class="block-card__content">
+				<div class="block-card__headline">
+					<div class="tag author">
+						<span class="thumbnail"><img src="https://picsum.photos/25/27" alt=""></span>
+						<span class="name">Jeff92</span>
+					</div>
+					<div class="tag likes">
+						<i class="fa fa-heart"></i>&nbsp;&nbsp;<span class="nb">60</span>
+					</div>
+				</div>
+				<div class="block-card__title">Vinyle de Michael Jackson</div>
+				<div class="block-card__text">
+					<span class="tag">Neuf</span>
+				</div>
+			</div>
+			<div class="block-card__footer">
+				<div class="price">160,00€</div>
+				<div class="actions">
+					<a href="#" class="action"><i class="fa fa-messages"></i></a>
+					<a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="block-card" data-preset="marketplace">
+		<div class="block-card__wrapper">
+			<div class="block-card__figure">
+				<img src="https://picsum.photos/400/403" alt="sample image">
+			</div>
+			<div class="block-card__content">
+				<div class="block-card__headline">
+					<div class="tag author">
+						<span class="thumbnail"><img src="https://picsum.photos/25/28" alt=""></span>
+						<span class="name">Jeff92</span>
+					</div>
+					<div class="tag likes">
+						<i class="fa fa-heart"></i>&nbsp;&nbsp;<span class="nb">60</span>
+					</div>
+				</div>
+				<div class="block-card__title">Vinyle de Michael Jackson</div>
+				<div class="block-card__text">
+					<span class="tag">Neuf</span>
+				</div>
+			</div>
+			<div class="block-card__footer">
+				<div class="price">160,00€</div>
+				<div class="actions">
+					<a href="#" class="action"><i class="fa fa-messages"></i></a>
+					<a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

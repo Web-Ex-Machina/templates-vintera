@@ -1,0 +1,53 @@
+<?php
+	// Get the file
+	$arrCrop = deserialize($this->size);
+	$objFile = FilesModel::findByUuid($this->singleSRC) ?: FilesModel::findOneByPath($this->singleSRC);
+	$strFile = \Image::get($objFile->path, $arrCrop[0] ?: 1920, $arrCrop[1] ?: '', $arrCrop[2] ?: "proportional");
+
+	// Prepare the main block classes
+	$arrClasses = [];
+	if($this->image_displaymode)
+		$arrClasses[] = $this->image_displaymode;
+	if($this->image_ratio)
+		$arrClasses[] = $this->image_ratio;
+	if($this->image_align_horizontal)
+		$arrClasses[] = $this->image_align_horizontal;
+	if($this->image_align_vertical)
+		$arrClasses[] = $this->image_align_vertical;
+
+	// Prepare the block wrapper
+	$arrWrapperClasses = ['block-card__wrapper'];
+	if ($this->addRadius) 
+		$arrWrapperClasses[] = 'rad';
+	$strWrapperStart = 'div class="'.implode(' ', $arrWrapperClasses).'"';
+	$strWrapperEnd = 'div';
+?>
+<div class="block-card <?= implode(' ', $arrClasses) ?> <?= $this->class ?>"<?= $this->cssID ?> data-preset="<?= $this->preset ?: 'default' ?>">
+	<<?= $strWrapperStart ?>>
+		<?php if ($this->singleSRC && $this->content_order == 'img_first'): ?>
+			<div class="block-card__figure <?= $this->image_css ?>" <?= $this->preset == 'inline' && $this->image_displaymode == 'img--natural' ? 'style="width:'.($arrCrop[0]?$arrCrop[0].'px':'auto').'"' :'' ?>>
+				<img src="<?= $strFile ?>" alt="<?= $this->alt ?>">
+			</div>
+		<?php endif ?>
+		<?php if($this->text || $this->headline): ?>
+			<div class="block-card__content">
+				<?php if ($this->headline): ?><div class="block-card__title <?= $this->hl ?> <?= $this->title_css ?>"><?= $this->headline ?></div><?php endif; ?>
+				<?php if ($this->text): ?><div class="block-card__text <?= $this->text_css ?>"><?= $this->text ?></div><?php endif; ?>
+				
+				<?php if(!empty($this->links)): ?>
+				<div class="block-card__actions">
+					<?php foreach ($this->links as $l): ?>
+					<a href="<?= $l->link_url ?>" <?= $l->link_target ? ' target="_blank"' : '' ?> class="<?= $l->link_css ?>" title="<?= trim(strip_tags($l->link_title)) ?: trim(strip_tags($l->link_text)) ?>"><?= $l->link_text ?></a>
+					<?php endforeach; ?>
+				</div>
+				<?php endif ?>
+			</div>
+		<?php endif; ?>
+		<?php if ($this->singleSRC && $this->content_order == 'txt_first'): ?>
+			<div class="block-card__figure <?= $this->image_css ?>" <?= $this->preset == 'inline' && $this->image_displaymode == 'img--natural' ? 'style="width:'.($arrCrop[0]?$arrCrop[0].'px':'auto').'"' :'' ?>>
+				<img src="<?= $strFile ?>" alt="<?= $this->alt ?>">
+			</div>
+		<?php endif ?>
+
+    </<?= $strWrapperEnd ?>>
+</div>

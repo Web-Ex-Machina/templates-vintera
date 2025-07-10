@@ -1,0 +1,113 @@
+<?php
+
+namespace Contao;
+
+if ($GLOBALS['TL_CONFIG']['useRTE']):
+
+// Use document.write() here in case TinyMCE is loaded in a subpalette (see #1424)
+?>
+<script>window.tinymce || document.write('<script src="<?= $this->asset('js/tinymce.min.js', 'contao-components/tinymce4') ?>">\x3C/script>')</script>
+<script>
+window.tinymce && tinymce.init({
+  skin: 'contao',
+  selector: '#<?= $this->selector ?>',
+  language: '<?= Backend::getTinyMceLanguage() ?>',
+  element_format: 'html',
+  document_base_url: '<?= Environment::get('base') ?>',
+  entities: '160,nbsp,60,lt,62,gt,173,shy',
+  branding: false,
+  setup: function(editor) {
+    editor.getElement().removeAttribute('required');
+  },
+  init_instance_callback: function(editor) {
+    if (document.activeElement && document.activeElement.id && document.activeElement.id == editor.id) {
+      editor.editorManager.get(editor.id).focus();
+    }
+    editor.on('focus', function() { Backend.getScrollOffset(); });
+  },
+  file_browser_callback: function(field_name, url, type, win) {
+    Backend.openModalBrowser(field_name, url, type, win, '<?= $this->source ?>');
+  },
+  file_browser_callback_types: <?= json_encode($this->fileBrowserTypes) ?>,
+  content_css: 'system/themes/<?= Backend::getTheme() ?>/tinymce.min.css',
+  plugins: 'autosave charmap code fullscreen image importcss link lists paste searchreplace stripnbsp tabfocus table visualblocks visualchars',
+  browser_spellcheck: true,
+  tabfocus_elements: ':prev,:next',
+  importcss_append: true,
+  extended_valid_elements: 'q[cite|class|title],article,section,hgroup,figure,figcaption',
+  menubar: 'file edit insert view format table',
+  toolbar: 'link unlink | image | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | code',
+  link_class_list: [
+    {title: 'None', value: ''},
+    {title: 'Button',
+      menu:[
+        {title: 'Normal',  
+          menu:[
+            {title : 'Background',
+              menu: [
+               {title: 'btn-bg-primary',   value:'btn-bg-primary'},
+               {title: 'btn-bg-secondary', value:'btn-bg-secondary'},
+              ]
+            },
+            {title : 'Borders'   ,
+              menu: [
+               {title: 'btn-bd-primary',   value:'btn-bd-primary'},
+               {title: 'btn-bd-secondary', value:'btn-bd-secondary'},
+              ]
+            }
+          ]
+        },
+        {title: 'Small',   
+          menu:[
+            {title : 'Background',
+              menu: [
+               {title: 'btn-sm btn-bg-primary',   value:'btn-sm btn-bg-primary'},
+               {title: 'btn-sm btn-bg-secondary', value:'btn-sm btn-bg-secondary'},
+              ]
+            },
+            {title : 'Borders'   ,
+              menu: [
+               {title: 'btn-sm btn-bd-primary',   value:'btn-sm btn-bd-primary'},
+               {title: 'btn-sm btn-bd-secondary', value:'btn-sm btn-bd-secondary'},
+              ]
+            }
+          ]
+        },
+        {title: 'Large',   
+          menu:[
+            {title : 'Background',
+              menu: [
+               {title: 'btn-lg btn-bg-primary',   value:'btn-lg btn-bg-primary'},
+               {title: 'btn-lg btn-bg-secondary', value:'btn-lg btn-bg-secondary'},
+              ]
+            },
+            {title : 'Borders'   ,
+              menu: [
+               {title: 'btn-lg btn-bd-primary',   value:'btn-lg btn-bd-primary'},
+               {title: 'btn-lg btn-bd-secondary', value:'btn-lg btn-bd-secondary'},
+              ]
+            }
+          ]
+        },
+        {title: 'Squared', 
+          menu:[
+            {title : 'Background',
+              menu: [
+               {title: 'squared btn-bg-primary',   value:'squared btn-bg-primary'},
+               {title: 'squared btn-bg-secondary', value:'squared btn-bg-secondary'},
+              ]
+            },
+            {title : 'Borders'   ,
+              menu: [
+               {title: 'squared btn-bd-primary',   value:'squared btn-bd-primary'},
+               {title: 'squared btn-bd-secondary', value:'squared btn-bd-secondary'},
+              ]
+            }
+          ]
+        },
+      ]
+    },
+  ]
+});
+</script>
+<?php endif; ?>

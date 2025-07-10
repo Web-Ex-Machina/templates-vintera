@@ -1,0 +1,25 @@
+<div class="layout_latest_strip block-card arc_<?= $this->archive->id ?> block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article" data-preset="inline">
+  <div class="block-card__wrapper" title="<?= $this->headline ?>">
+    <?php if ($this->addImage): ?>
+    <div class="block-card__figure">
+      <?php $this->insert('image', $this->arrData); ?>
+    </div>
+    <?php endif; ?>
+
+    <div class="block-card__content">
+      <div class="block-card__title h2" itemprop="name"><?= $this->linkHeadline ?></div>
+      <div class="ms__artist__news__data">
+        <span class="tag date revert"><time datetime="<?= $this->datetime ?>" itemprop="datePublished"><?= $this->date ?></time></span>
+        <?php if ($this->author): ?>
+            <span class="tag revert"><?php echo $this->author ?></span>
+        <?php endif ?>
+        <!-- <?php if ($this->categories): ?>
+          <?php foreach ($this->categories as $key => $category): ?>
+            <span class="tag revert"><?php echo $category['title'] ?></span>
+          <?php endforeach ?>        
+        <?php endif ?> -->
+      </div>
+      <div class="block-card__text"></div>
+    </div>
+  </div>
+</div>

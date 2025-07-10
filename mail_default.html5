@@ -1,0 +1,543 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title><?php echo $this->title; ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+@media (max-width:1400px) {
+  .hidden-xl {
+    display: none;
+  }
+}
+@media (max-width:1200px) {
+  .hidden-lg {
+    display: none;
+  }
+}
+@media (max-width:992px) {
+  .hidden-md {
+    display: none;
+  }
+}
+@media (max-width:768px) {
+  .hidden-sm {
+    display: none;
+  }
+}
+@media (max-width:620px) {
+  .hidden-xs {
+    display: none;
+  }
+}
+@media (max-width:520px) {
+  .hidden-xxs {
+    display: none;
+  }
+}
+@media (max-width:620px) {
+  .m-all {
+    margin: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-all-x2 {
+    margin: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-all-x3 {
+    margin: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-all-x4 {
+    margin: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-all {
+    padding: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-all-x2 {
+    padding: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-all-x3 {
+    padding: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-all-x4 {
+    padding: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-top,
+.m-y {
+    margin-top: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-top-x2,
+.m-y-x2 {
+    margin-top: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-top-x3,
+.m-y-x3 {
+    margin-top: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-top-x4,
+.m-y-x4 {
+    margin-top: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-top,
+.p-y {
+    padding-top: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-top-x2,
+.p-y-x2 {
+    padding-top: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-top-x3,
+.p-y-x3 {
+    padding-top: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-top-x4,
+.p-y-x4 {
+    padding-top: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-right,
+.m-x {
+    margin-right: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-right-x2,
+.m-x-x2 {
+    margin-right: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-right-x3,
+.m-x-x3 {
+    margin-right: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-right-x4,
+.m-x-x4 {
+    margin-right: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-right,
+.p-x {
+    padding-right: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-right-x2,
+.p-x-x2 {
+    padding-right: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-right-x3,
+.p-x-x3 {
+    padding-right: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-right-x4,
+.p-x-x4 {
+    padding-right: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-bottom,
+.m-y {
+    margin-bottom: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-bottom-x2,
+.m-y-x2 {
+    margin-bottom: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-bottom-x3,
+.m-y-x3 {
+    margin-bottom: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-bottom-x4,
+.m-y-x4 {
+    margin-bottom: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-bottom,
+.p-y {
+    padding-bottom: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-bottom-x2,
+.p-y-x2 {
+    padding-bottom: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-bottom-x3,
+.p-y-x3 {
+    padding-bottom: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-bottom-x4,
+.p-y-x4 {
+    padding-bottom: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-left,
+.m-x {
+    margin-left: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-left-x2,
+.m-x-x2 {
+    margin-left: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-left-x3,
+.m-x-x3 {
+    margin-left: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .m-left-x4,
+.m-x-x4 {
+    margin-left: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-left,
+.p-x {
+    padding-left: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-left-x2,
+.p-x-x2 {
+    padding-left: 2em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-left-x3,
+.p-x-x3 {
+    padding-left: 4em!important;
+  }
+}
+@media (max-width:620px) {
+  .p-left-x4,
+.p-x-x4 {
+    padding-left: 6em!important;
+  }
+}
+@media (max-width:620px) {
+  .counter-all {
+    margin: -1em!important;
+  }
+}
+@media (max-width:620px) {
+  .counter-top,
+.counter-y {
+    margin-top: -1em!important;
+  }
+}
+@media (max-width:620px) {
+  .counter-right,
+.counter-x {
+    margin-right: -1em!important;
+  }
+}
+@media (max-width:620px) {
+  .counter-bottom,
+.counter-y {
+    margin-bottom: -1em!important;
+  }
+}
+@media (max-width:620px) {
+  .counter-left,
+.counter-x {
+    margin-left: -1em!important;
+  }
+}
+@media (max-width:1400px) {
+  .btn-lg[class*=icon-] .hidden-xl+i[class*=fa],
+.btn-lg[class*=icon-] .hidden-xl+svg,
+.btn-sm[class*=icon-] .hidden-xl+i[class*=fa],
+.btn-sm[class*=icon-] .hidden-xl+svg,
+.btn[class*=icon-] .hidden-xl+i[class*=fa],
+.btn[class*=icon-] .hidden-xl+svg,
+[class*=icon-][class*=btn-bd-] .hidden-xl+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-xl+svg,
+[class*=icon-][class*=btn-bg-] .hidden-xl+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-xl+svg,
+button[class*=icon-] .hidden-xl+i[class*=fa],
+button[class*=icon-] .hidden-xl+svg,
+input[class*=icon-][type=button] .hidden-xl+i[class*=fa],
+input[class*=icon-][type=button] .hidden-xl+svg,
+input[class*=icon-][type=submit] .hidden-xl+i[class*=fa],
+input[class*=icon-][type=submit] .hidden-xl+svg {
+    margin: 0;
+  }
+}
+@media (max-width:1200px) {
+  .btn-lg[class*=icon-] .hidden-lg+i[class*=fa],
+.btn-lg[class*=icon-] .hidden-lg+svg,
+.btn-sm[class*=icon-] .hidden-lg+i[class*=fa],
+.btn-sm[class*=icon-] .hidden-lg+svg,
+.btn[class*=icon-] .hidden-lg+i[class*=fa],
+.btn[class*=icon-] .hidden-lg+svg,
+[class*=icon-][class*=btn-bd-] .hidden-lg+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-lg+svg,
+[class*=icon-][class*=btn-bg-] .hidden-lg+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-lg+svg,
+button[class*=icon-] .hidden-lg+i[class*=fa],
+button[class*=icon-] .hidden-lg+svg,
+input[class*=icon-][type=button] .hidden-lg+i[class*=fa],
+input[class*=icon-][type=button] .hidden-lg+svg,
+input[class*=icon-][type=submit] .hidden-lg+i[class*=fa],
+input[class*=icon-][type=submit] .hidden-lg+svg {
+    margin: 0;
+  }
+}
+@media (max-width:992px) {
+  .btn-lg[class*=icon-] .hidden-md+i[class*=fa],
+.btn-lg[class*=icon-] .hidden-md+svg,
+.btn-sm[class*=icon-] .hidden-md+i[class*=fa],
+.btn-sm[class*=icon-] .hidden-md+svg,
+.btn[class*=icon-] .hidden-md+i[class*=fa],
+.btn[class*=icon-] .hidden-md+svg,
+[class*=icon-][class*=btn-bd-] .hidden-md+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-md+svg,
+[class*=icon-][class*=btn-bg-] .hidden-md+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-md+svg,
+button[class*=icon-] .hidden-md+i[class*=fa],
+button[class*=icon-] .hidden-md+svg,
+input[class*=icon-][type=button] .hidden-md+i[class*=fa],
+input[class*=icon-][type=button] .hidden-md+svg,
+input[class*=icon-][type=submit] .hidden-md+i[class*=fa],
+input[class*=icon-][type=submit] .hidden-md+svg {
+    margin: 0;
+  }
+}
+@media (max-width:768px) {
+  .btn-lg[class*=icon-] .hidden-sm+i[class*=fa],
+.btn-lg[class*=icon-] .hidden-sm+svg,
+.btn-sm[class*=icon-] .hidden-sm+i[class*=fa],
+.btn-sm[class*=icon-] .hidden-sm+svg,
+.btn[class*=icon-] .hidden-sm+i[class*=fa],
+.btn[class*=icon-] .hidden-sm+svg,
+[class*=icon-][class*=btn-bd-] .hidden-sm+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-sm+svg,
+[class*=icon-][class*=btn-bg-] .hidden-sm+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-sm+svg,
+button[class*=icon-] .hidden-sm+i[class*=fa],
+button[class*=icon-] .hidden-sm+svg,
+input[class*=icon-][type=button] .hidden-sm+i[class*=fa],
+input[class*=icon-][type=button] .hidden-sm+svg,
+input[class*=icon-][type=submit] .hidden-sm+i[class*=fa],
+input[class*=icon-][type=submit] .hidden-sm+svg {
+    margin: 0;
+  }
+}
+@media (max-width:620px) {
+  .btn-lg[class*=icon-] .hidden-xs+i[class*=fa],
+.btn-lg[class*=icon-] .hidden-xs+svg,
+.btn-sm[class*=icon-] .hidden-xs+i[class*=fa],
+.btn-sm[class*=icon-] .hidden-xs+svg,
+.btn[class*=icon-] .hidden-xs+i[class*=fa],
+.btn[class*=icon-] .hidden-xs+svg,
+[class*=icon-][class*=btn-bd-] .hidden-xs+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-xs+svg,
+[class*=icon-][class*=btn-bg-] .hidden-xs+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-xs+svg,
+button[class*=icon-] .hidden-xs+i[class*=fa],
+button[class*=icon-] .hidden-xs+svg,
+input[class*=icon-][type=button] .hidden-xs+i[class*=fa],
+input[class*=icon-][type=button] .hidden-xs+svg,
+input[class*=icon-][type=submit] .hidden-xs+i[class*=fa],
+input[class*=icon-][type=submit] .hidden-xs+svg {
+    margin: 0;
+  }
+}
+@media (max-width:520px) {
+  .btn-lg[class*=icon-] .hidden-xxs+i[class*=fa],
+.btn-lg[class*=icon-] .hidden-xxs+svg,
+.btn-sm[class*=icon-] .hidden-xxs+i[class*=fa],
+.btn-sm[class*=icon-] .hidden-xxs+svg,
+.btn[class*=icon-] .hidden-xxs+i[class*=fa],
+.btn[class*=icon-] .hidden-xxs+svg,
+[class*=icon-][class*=btn-bd-] .hidden-xxs+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-xxs+svg,
+[class*=icon-][class*=btn-bg-] .hidden-xxs+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-xxs+svg,
+button[class*=icon-] .hidden-xxs+i[class*=fa],
+button[class*=icon-] .hidden-xxs+svg,
+input[class*=icon-][type=button] .hidden-xxs+i[class*=fa],
+input[class*=icon-][type=button] .hidden-xxs+svg,
+input[class*=icon-][type=submit] .hidden-xxs+i[class*=fa],
+input[class*=icon-][type=submit] .hidden-xxs+svg {
+    margin: 0;
+  }
+}
+@media (max-width:620px) {
+  .spacer-x {
+    width: 1em!important;
+  }
+}
+@media (max-width:620px) {
+  .spacer-y {
+    height: 1em!important;
+  }
+}
+@media (max-width:992px) {
+  #container {
+    width: 80%!important;
+  }
+}
+@media (max-width:768px) {
+  #container {
+    width: 90%!important;
+  }
+}
+@media (max-width:620px) {
+  #container {
+    width: 100%!important;
+  }
+}
+@media (max-width:620px) {
+  #header td {
+    display: block;
+  }
+}
+@media (max-width:992px) {
+  #header #logo img {
+    width: 200px!important;
+  }
+}
+@media (max-width:620px) {
+  #header #logo img {
+    width: auto!important;
+    max-width: 80%;
+  }
+}
+@media (max-width:620px) {
+  #header #logo {
+    width: auto;
+  }
+}
+@media (max-width:620px) {
+  #header #headline {
+    text-align: center!important;
+    max-width: 90%!important;
+    margin: auto;
+  }
+}
+@media (max-width:520px) {
+  #footer td {
+    display: block;
+    width: -webkit-fit-content;
+    width: fit-content;
+    margin: auto;
+  }
+}
+</style>
+</head>
+<body style="margin: 0; padding: 0; background: #e5e5e5; color: #ddd; font-size: 18px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;">
+  <table border="0" cellpadding="0" cellspacing="0" id="body" style="border-collapse: collapse; width: 100%; background: #e5e5e5; color: #ddd; font-size: 18px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;" width="100%">
+    <tr style="max-width: 100%;">
+      <td style="max-width: 100%;">
+        <table border="0" align="center" cellpadding="0" cellspacing="0" id="container" style="border-collapse: collapse; position: relative; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.27),0 0 40px rgba(0,0,0,.06) inset; box-shadow: 0 1px 4px rgba(0,0,0,.27),inset 0 0 40px rgba(0,0,0,.06); max-width: 100%; width: 800px; background: #0a0a0a;" width="800">
+          <tr style="max-width: 100%;">
+            <td style="max-width: 100%;">
+              <table border="0" align="center" cellpadding="0" cellspacing="0" id="header" style="border-collapse: collapse; width: 100%; background-color: #0a0a0a; color: #ddd;" width="100%" bgcolor="#0a0a0a">
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr style="max-width: 100%;">
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td class="txt-center" id="logo" width="1" style="max-width: 100%; text-align: center;" align="center">
+                    <!-- <img src="https://metalstore.webexmachina.fr/files/logos/vintera-v1.png" alt="Vintera" style="width: 160px;" width="160"> -->
+                    <img src="{{env::path}}files/logos/vintera-v1.png" alt="Vintera" style="width: 160px;" width="160">
+                  </td>
+                  <td class="spacer-x spacer-y" style="max-width: 100%; width: 2em; height: 2em;"></td>
+                </tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="max-width: 100%;">
+            <td style="max-width: 100%;">
+              <table border="0" align="center" cellpadding="0" cellspacing="0" id="main" style="border-collapse: collapse; width: 100%;" width="100%">
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr style="max-width: 100%;">
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td style="max-width: 100%;"> 
+                    <!-- content here -->
+                    <?= $this->body ?>
+                  </td>
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                </tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="max-width: 100%;">
+            <td style="max-width: 100%;">
+              <table border="0" align="center" cellpadding="0" cellspacing="0" id="subfooter" style="border-collapse: collapse; width: 100%; font-size: 14px; color: hsla(0,0%,86.7%,.8);" width="100%">
+                <tr class="spacer-y" style="max-width: 100%; height: 1em;"></tr>
+                <tr style="max-width: 100%;">
+                  <td class="spacer-x" style="max-width: 100%; width: 1em;"></td>
+                  <td class="txt-center" style="max-width: 100%; text-align: center;" align="center">
+                    © {{date::Y}} {{page::rootTitle}} | {{iflng::en}}This email was sent from an automatic mailbox. Please don't answer it.{{iflng::fr}}Cet email a été envoyé depuis une boîte automatique. Merci de ne pas y répondre.{{iflng}}
+                  </td>
+                  <td class="spacer-x" style="max-width: 100%; width: 1em;"></td>
+                </tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 1em;"></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
