@@ -1,0 +1,34 @@
+{% extends "@Contao_ContaoCoreBundle/content_element/text.html.twig" %}
+
+{% set attributes = attrs()
+    .addClass(["ce_text", "ce_text--split"])
+    .mergeWith(attributes|default)
+%}
+
+{%- block inner %}
+    {{ block('content') }}
+{% endblock -%}
+
+{% block content %}
+    <div class="container wrapper">
+        {{ block('text_media') }}
+
+        <div class="content">
+            {% if headline.text %}
+                {{ block('headline_component') }}
+            {% endif %}
+        {# Richtext #}
+        {% block text %}
+            {{ text|csp_inline_styles|insert_tag|encode_email|raw }}
+        {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block text_media %}
+    {% if image %}
+        <div class="picture">
+        {% with {figure: image} %}{{ block('figure_component') }}{% endwith %}
+        </div>
+    {% endif %}
+{% endblock %}

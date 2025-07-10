@@ -1,0 +1,12 @@
+{% extends "@Contao_ContaoCoreBundle/content_element/hyperlink.html.twig" %}
+
+{% set attributes = attrs()
+    .addClass(["icon-last"])
+    .mergeWith(attributes|default)
+%}
+
+{% block text_link %}
+    {{- text_before -}}
+    <a{{ attrs(link_attributes|default) }}>{{ link_text|insert_tag }} <i class="fa-solid fa-arrow-circle-right"></i></a>
+    {{- text_after -}}
+{% endblock %}
