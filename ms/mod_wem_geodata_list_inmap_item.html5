@@ -36,7 +36,7 @@ return $s['title'];
   </div>
   <?php if ($location['teaser']): ?>
     <div class="map__list__item__text">
-      <?= \StringUtil::substr(str_replace('[nbsp]', ' ', $location['teaser']), 300) ?>
+      <?= Contao\StringUtil::substr(str_replace('[nbsp]', ' ', $location['teaser']), 300) ?>
     </div>
   <?php endif ?>
 
