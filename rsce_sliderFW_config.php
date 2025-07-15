@@ -27,7 +27,7 @@ return [
                     'inputType' => 'fileTree',
                     'eval' => ['filesOnly' => true,
                     'fieldType' => 'radio',
-                    'extensions' => Config::get('validImageTypes')],
+                    'extensions' => \Contao\Config::get('validImageTypes')],
                 ],
                 'img_size' => [
                     'label' => &$GLOBALS['TL_LANG']['tl_content']['size'],
@@ -35,7 +35,7 @@ return [
                     'reference' => &$GLOBALS['TL_LANG']['MSC'],
                     'eval' => ['rgxp' => 'natural', 'includeBlankOption' => true, 'nospace' => true, 'helpwizard' => true, 'tl_class' => 'w50 clr'],
                     'options_callback' => function () {
-                        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+                        // return \Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
                     },
                 ],
                 'img_alt' => [
@@ -134,10 +134,10 @@ return [
                     'label' => &$GLOBALS['TL_LANG']['tl_content']['title_modifier'],
                     'inputType' => 'select',
                     'options' => [
-                        'title--1' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '1'),
-                        'title--2' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '2'),
-                        'title--3' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '3'),
-                        'title--4' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '4'),
+                        'title--1' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'] ?? '%s', '1'),
+                        'title--2' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'] ?? '%s', '2'),
+                        'title--3' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'] ?? '%s', '3'),
+                        'title--4' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'] ?? '%s', '4'),
                     ],
                     'eval' => ['tl_class' => 'w50', 'mandatory' => false, 'includeBlankOption'=> true]
                 ],
@@ -179,10 +179,18 @@ return [
                     'inputType' => 'group',
                 ],
                 'link_href' => [
-                    'label' => &$GLOBALS['TL_LANG']['MSC']['url'], 'inputType' => 'text', 'eval' => ['rgxp' => 'url', 'tl_class' => 'w50 wizard'], 'wizard' => [['tl_content', 'pagePicker']],
+                    'label' => &$GLOBALS['TL_LANG']['MSC']['url'], 
+                    'inputType' => 'text', 
+                    'eval' => [
+                        'rgxp' => 'url', 
+                        'tl_class' => 'w50 wizard',
+                        'dcaPicker' => true,
+                    ], 
+                    // 'wizard' => [['tl_content', 'pagePicker']],
                 ],
                 'link_text' => [
-                    'label' => &$GLOBALS['TL_LANG']['tl_content']['linkTitle'], 'inputType' => 'text', 'eval' => ['tl_class' => 'w50'],
+                    'label' => &$GLOBALS['TL_LANG']['tl_content']['linkTitle'], 
+                    'inputType' => 'text', 'eval' => ['tl_class' => 'w50'],
                 ],
                 'link_title' => [
                     'label' => &$GLOBALS['TL_LANG']['tl_content']['titleText'], 'inputType' => 'text', 'eval' => ['tl_class' => 'w50'],
