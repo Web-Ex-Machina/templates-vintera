@@ -13,7 +13,7 @@ declare(strict_types=1);
  */
 
 return [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['rsce_blockcard'],
+    'label' => ['Block Card', 'Block Card Element'],
     'types' => ['content'],
     'contentCategory' => 'miscellaneous',
     'standardFields' => ['cssID'],

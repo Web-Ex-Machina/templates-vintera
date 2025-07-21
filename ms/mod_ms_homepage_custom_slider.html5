@@ -1,3 +1,4 @@
+<?php if (null !== $this->items && !empty($this->items)): ?>
 <div class="sliderFW nav--hidden content--v--bottom img__opacity--10 content__bg__opacity--2 w-full img--top" data-nbitems="1" data-height="calc(100vh + var(--lists-overlap,0))" data-duration="2500" data-delay="5600" data-auto="true" data-arrows="false" data-transition="fade" data-swipe="true" data-loop="true" data-keypress="false">
 	<div class="sliderFW__container" style="height: calc(100vh + var(--lists-overlap,0));">
 		<div class="sliderFW__rail">
@@ -30,3 +31,4 @@
 		</div>
 	</div>
 </div>
+<?php endif; ?>

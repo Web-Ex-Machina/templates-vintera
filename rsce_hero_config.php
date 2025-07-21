@@ -12,8 +12,14 @@ declare(strict_types=1);
  * @link     https://github.com/Web-Ex-Machina/contao-smartgear/
  */
 
+use Contao\BackendUser;
+use Contao\System;
+
 return [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['rsce_hero'], 'contentCategory' => 'banner', 'standardFields' => ['cssID'], 'fields' => [
+    'label' => ['Bannière', 'Bannière (Hero)'], 
+    'contentCategory' => 'banner', 
+    'standardFields' => ['cssID'], 
+    'fields' => [
         'image_legend' => [
             'label' => [&$GLOBALS['TL_LANG']['tl_content']['image_legend']],
             'inputType' => 'group',
@@ -23,7 +29,7 @@ return [
         ],
         'image_size' => [
             'label' => &$GLOBALS['TL_LANG']['tl_content']['size'], 'inputType' => 'imageSize', 'reference' => &$GLOBALS['TL_LANG']['MSC'], 'eval' => ['rgxp' => 'natural', 'includeBlankOption' => true, 'nospace' => true, 'helpwizard' => true, 'tl_class' => 'w50 clr'], 'options_callback' => function () {
-                return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+                return System::getContainer()->get('contao.image.sizes')->getOptionsForUser(BackendUser::getInstance());
             },
         ],
         'alt' => [
@@ -135,10 +141,10 @@ return [
             'label' => &$GLOBALS['TL_LANG']['tl_content']['title_modifier'],
             'inputType' => 'select',
             'options' => [
-                'title--1' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '1'),
-                'title--2' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '2'),
-                'title--3' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '3'),
-                'title--4' => sprintf($GLOBALS['TL_LANG']['tl_content']['title_modifier']['option'], '4'),
+                'title--1' => 'title--1',
+                'title--2' => 'title--2',
+                'title--3' => 'title--3',
+                'title--4' => 'title--4',
             ],
             'eval' => ['tl_class' => 'w50','includeBlankOption'=>true],
         ],
@@ -203,7 +209,7 @@ return [
             'inputType' => 'group',
         ],
         'link_href' => [
-            'label' => &$GLOBALS['TL_LANG']['MSC']['url'], 'inputType' => 'text', 'eval' => ['rgxp' => 'url', 'tl_class' => 'w50 wizard'], 'wizard' => [['tl_content', 'pagePicker']],
+            'label' => &$GLOBALS['TL_LANG']['MSC']['url'], 'inputType' => 'text', 'eval' => ['rgxp' => 'url', 'tl_class' => 'w50 wizard', 'dcaPicker'=>true],
         ], 
         'link_text' => [
             'label' => &$GLOBALS['TL_LANG']['tl_content']['linkTitle'], 'inputType' => 'text', 'eval' => ['tl_class' => 'w50'],

@@ -93,7 +93,7 @@
               <?php endif ?>
             </div>
             <div class="block-card__content">
-              <div class="block-card__title"><?= $item['title'] ?><?php if ($item['deathDate']): ?>&nbsp;<i class="fa fa-cross"></i><?php endif; ?></div>
+              <div class="block-card__title"><?= $item['title'] ?><?php if (array_key_exists('deathDate', $item)): ?>&nbsp;<i class="fa fa-cross"></i><?php endif; ?></div>
             </div>
           </<?= $item['href'] ? 'a' : 'div' ?> >
         </div>

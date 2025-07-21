@@ -14,7 +14,7 @@
         <span class="tag category revert"><?= $this->author ?></span>
       </div>
       <div class="block-card__text">
-        <?= $this->teaser ?>
+        <?= $this->cspInlineStyles($this->teaser) ?>
       </div>
       <?php if ($this->hasText || $this->hasTeaser): ?>
       <div class="block-card__actions">

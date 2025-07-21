@@ -19,7 +19,7 @@
     <?php endif; ?>
     <?php if ($this->resetUrl !== null): ?>
         <div class="reset-link">
-            <a href="<?= ampersand($this->resetUrl) ?>" class="ft-2-em" title="<?= specialchars($GLOBALS['TL_LANG']['MSC']['resetCategoriesCumulative'][1]) ?>"><i class="fad fa-delete-left"></i></a>
+            <a href="<?= Contao\StringUtil::ampersand($this->resetUrl) ?>" class="ft-2-em" title="<?= Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['resetCategoriesCumulative'][1]) ?>"><i class="fad fa-delete-left"></i></a>
         </div>
     <?php endif; ?>
 </div>

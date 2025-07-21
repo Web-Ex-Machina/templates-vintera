@@ -1,4 +1,4 @@
-<?php if((isset($_GET['items']) || (Config::get('useAutoItem') && isset($_GET['auto_item'])))): ?>
+<?php if(Contao\Input::get('auto_item')): ?>
 
 <?php elseif ($this->teaserOnly): ?>
 

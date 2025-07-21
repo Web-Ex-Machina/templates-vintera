@@ -12,8 +12,14 @@ declare(strict_types=1);
  * @link     https://github.com/Web-Ex-Machina/contao-smartgear/
  */
 
+use Contao\BackendUser;
+use Contao\System;
+
 return [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['rsce_hero_start'], 'contentCategory' => 'banner', 'standardFields' => ['cssID'], 'fields' => [
+    'label' => ['Bannière (Start)', 'Bannière (Hero)'],  
+    'contentCategory' => 'banner', 
+    'standardFields' => ['cssID'], 
+    'fields' => [
         'image_legend' => [
             'label' => [&$GLOBALS['TL_LANG']['tl_content']['image_legend']],
             'inputType' => 'group',
@@ -23,7 +29,7 @@ return [
         ],
         'image_size' => [
             'label' => &$GLOBALS['TL_LANG']['tl_content']['size'], 'inputType' => 'imageSize', 'reference' => &$GLOBALS['TL_LANG']['MSC'], 'eval' => ['rgxp' => 'natural', 'includeBlankOption' => true, 'nospace' => true, 'helpwizard' => true, 'tl_class' => 'w50 clr'], 'options_callback' => function () {
-                return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+                return System::getContainer()->get('contao.image.sizes')->getOptionsForUser(BackendUser::getInstance());
             },
         ],
         'alt' => [

@@ -56,14 +56,14 @@
       <tbody>
         <?php foreach ($this->versions as $version): ?>
           <?php 
-        	$objU = UserModel::findOneByUsername($version['username']); 
+        	$objU = Contao\UserModel::findOneByUsername($version['username']); 
         	if ($objU) {
         		$strName = $objU->name;	
         	} else {
         		$strName = $version['username'] ?: '-';
         	}
           ?>
-          <tr class="<?= $version['class'] ?> click2edit hover-row">
+          <tr class="click2edit hover-row">
             <td><?= $version['date'] ?></td>
             <td><?= $strName ?></td>
             <td><?= $version['shortTable'] ?></td>

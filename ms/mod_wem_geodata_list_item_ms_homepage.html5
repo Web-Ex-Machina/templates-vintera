@@ -10,7 +10,7 @@
   </div>
   <div class="list__item__subtitle">
     <?php if($this->location['teaser']): ?>
-      <p><?php echo \StringUtil::substr($this->location['teaser'], 65); ?></p>
+      <p><?php echo \Contao\StringUtil::substr($this->location['teaser'], 65); ?></p>
     <?php endif; ?>
   </div>
 </div>

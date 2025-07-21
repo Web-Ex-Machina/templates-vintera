@@ -28,11 +28,10 @@
   if ($this->items) {
       $arrSlides = [];
       foreach ($this->items as $slide) {
-          $arrCrop = deserialize($slide->img_size);
-          $objFile = FilesModel::findByUuid($slide->img_src);
-          $strFile = \Image::get($objFile->path, $arrCrop[0] ?: 1920, $arrCrop[1] ?: '', $arrCrop[2] ?: "proportional");
+          $arrCrop = \Contao\StringUtil::deserialize($slide->img_size);
+          $objFile = \Contao\FilesModel::findByUuid($slide->img_src);
           $arrSlide = [
-        "src"=>$strFile
+        "src"=>$objFile->path
         ,"alt"=>$slide->img_alt
       ];
           $arrSlide['arrClasses'] = [];

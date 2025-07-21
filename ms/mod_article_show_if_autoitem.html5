@@ -18,7 +18,7 @@
     <?= implode('', $this->elements) ?>
   <?php $this->endblock(); ?>
 
-<?php elseif((isset($_GET['items']) || (Config::get('useAutoItem') && isset($_GET['auto_item'])))): ?>
+<?php elseif(Contao\Input::get('auto_item')): ?>
 
   <div class="<?= $this->class ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
     <?php if ($this->printable): ?>
