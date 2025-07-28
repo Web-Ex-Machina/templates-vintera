@@ -14,8 +14,8 @@
           case 1: $alias = 'festivals'; break;
           case 3: $alias = 'concerts'; break;
           case 4: $alias = 'interviews'; break;
-          case 5: 
           case 6: $alias = 'reportages'; break;
+          case 5: 
           case 9: $alias = 'chronique'; break;
           case 7: $alias = 'news'; break;
           case 18: $alias = 'podcast'; break;
