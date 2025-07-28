@@ -5,7 +5,9 @@
   <?= $this->articles ?>
 
   <!-- indexer::stop -->
-  <a class="m-top btn" href="<?= $this->referer ?>" title="<?= $this->back ?>"><?= $this->back ?></a>
+  <?php if ($this->referer): ?>
+    <a class="m-top btn" href="<?= $this->referer ?>" title="<?= $this->back ?>"><?= $this->back ?></a>
+  <?php endif ?>
   <!-- indexer::continue -->
 
   <?php if ($this->allowComments): ?>
