@@ -1,13 +1,17 @@
-<div class="layout_latest_magazine block-card arc_<?= $this->archive->id ?> block<?= $this->class ?> <?php echo str_contains($this->class,'first')?'cols-span-2 cols-span-xxs-1 rows-span-2 rows-span-lg-1':'' ?>" itemscope itemtype="http://schema.org/Article" data-preset="thumbnail" data-maxlines="3">
+<div class="layout_latest_magazine block-card arc_<?= $this->archive->id ?> block<?= $this->class ?> <?php echo $this->count==1?'cols-span-2 cols-span-xxs-1 rows-span-2 rows-span-lg-1':'' ?>" itemscope itemtype="http://schema.org/Article" data-preset="thumbnail" data-maxlines="3">
   <div class="block-card__wrapper" title="<?= $this->headline ?>">
-    <div class="block-card__figure <?php echo str_contains($this->class,'first')?'r_4-3':'r_1-1' ?>">
+    <div class="block-card__figure <?php echo $this->count==1?'r_4-3':'r_1-1' ?>">
     <?php if ($this->addImage): ?>
         <?php $this->insert('image', $this->arrData); ?>
+    <?php else: ?>
+      <a href="<?php echo $this->link ?>" title="<?php echo $this->headline ?>">
+        <img src="files/media/home/red-pick-and-brown-guitar-vintera-2.jpg" alt="">
+      </a>
     <?php endif; ?>
     </div>
     <div class="block-card__headline">
       <span class="tag date revert"><time datetime="<?= $this->datetime ?>" itemprop="datePublished"><?= $this->date ?></time></span>
-      <?php if (($this->categories || $this->author) && !str_contains($this->class,'first')): ?>
+      <?php if (($this->categories || $this->author) && !$this->count==1): ?>
         <div class="txt-right">
           <?php if ($this->author): ?>
             <span class="tag revert"><?php echo $this->author ?></span>
@@ -20,12 +24,12 @@
     </div>
     <div class="block-card__content">
       <div class="block-card__title h3" itemprop="name"><?= $this->linkHeadline ?></div>
-      <?php if (str_contains($this->class,'first')): ?>
+      <?php if ($this->count==1): ?>
         <div class="block-card__text">
           <?php echo strip_tags($this->teaser, '<br>'); ?>
         </div>
       <?php endif ?>
-      <?php if (($this->categories || $this->author)  && str_contains($this->class,'first')): ?>
+      <?php if (($this->categories || $this->author)  && $this->count==1): ?>
         <div style="position: absolute; bottom:100%; right: 0; margin-bottom: 0.75em; margin-right: 0.75em;">
           <?php if ($this->author): ?>
             <span class="tag revert"><?php echo $this->author ?></span>

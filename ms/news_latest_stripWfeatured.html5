@@ -1,4 +1,4 @@
-<?php if (str_contains($this->class,'first')): ?>
+<?php if ($this->count == 1): ?>
   <div class="layout_latest_magazine block-card arc_<?= $this->archive->id ?> block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article" data-preset="thumbnail" data-maxlines="3">
     <div class="block-card__wrapper" title="<?= $this->headline ?>">
       <div class="block-card__figure r_2-1">
@@ -38,7 +38,7 @@
           <?php if ($this->author): ?>
             <span class="tag revert"><?php echo $this->author ?></span>
           <?php endif ?>
-          <!-- <?php if ($this->categories && !str_contains($this->class,'first')): ?>
+          <!-- <?php if ($this->categories && !$this->count == 1): ?>
             <?php foreach ($this->categories as $key => $category): ?>
               <span class="tag revert"><?php echo $category['title'] ?></span>
             <?php endforeach ?>        
