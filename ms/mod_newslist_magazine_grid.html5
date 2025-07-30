@@ -2,9 +2,13 @@
 
 <?php $this->block('content'); ?>
 
-  <div class="ms__artist__news__title w-100">
+  <div class="ms__artist__news__title w-100 m-bottom">
     <i class="fal fa-newspaper fa-2x"></i>
     <h1>Vintera Magazine</h1>
+
+    <div class="ms__artist__news__title__tools aligneself--right">
+      <a href="{{link_url::64}}" title="RSS Feed" target="_blank"><i class="fal fa-rss fa-2x"></i></a>
+    </div>
   </div>
 
   <?php if (empty($this->articles)): ?>
