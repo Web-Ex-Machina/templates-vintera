@@ -6,7 +6,7 @@
     <i class="fal fa-newspaper fa-2x"></i>
     <h1>Vintera Magazine</h1>
 
-    <div class="ms__artist__news__title__tools aligneself--right">
+    <div class="ms__artist__news__title__tools m-left-auto">
       <a href="{{link_url::64}}" title="RSS Feed" target="_blank"><i class="fal fa-rss fa-2x"></i></a>
     </div>
   </div>
