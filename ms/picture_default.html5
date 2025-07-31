@@ -8,7 +8,7 @@
 
 <img 
   src="<?= $this->img['src'] ?>"
-  <?php if ($this->img['srcset'] !== $this->img['src']): ?> srcset="<?= $this->img['srcset'] ?>"<?php endif; ?>
+  <?php if (array_key_exists('srcset', $this->img) && $this->img['srcset'] !== $this->img['src']): ?> srcset="<?= $this->img['srcset'] ?>"<?php endif; ?>
   <?php if (!empty($this->img['sizes'])): ?> sizes="<?= $this->img['sizes'] ?>"<?php endif; ?>
   <?php if (!empty($this->img['width']) && !empty($this->img['height'])): ?> width="<?= $this->img['width'] ?>" height="<?= $this->img['height'] ?>"<?php endif; ?> 
   alt="<?= $this->alt ?>"
