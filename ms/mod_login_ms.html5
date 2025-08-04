@@ -50,9 +50,9 @@
           <a href="<?= $this->route('contao_frontend_logout') ?>"><?= $this->cancel ?> ›</a>
         <?php endif; ?>
 
-        <?php if (!FE_USER_LOGGED_IN): ?>
+        <?php if ($this->pwResetUrl): ?>
         <p class="text-right ft-0-8-em">
-          <a href="{{link_url::34}}">Forgotten password &gt;</a>
+          <a href="<?= $this->pwResetUrl ?>"><?= $this->trans('MSC.lostPassword') ?> &gt;</a>
         </p>
         <?php endif; ?>
       </div>
